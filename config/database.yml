@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: uritime_production
   username: uritime
   password: <%= ENV['URITIME_DATABASE_PASSWORD'] %>
