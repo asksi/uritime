@@ -1,9 +1,17 @@
-<div class="center jumbotron">
-    <div class="text-center">
-        <h1>Welcome to Uritime!</h1>
-        <p>Uritimeとはカレンダーを利用した<br>
-        スケジュール管理アプリです。</p>
-        
-        <%= link_to "登録はこちら", signup_path, class: "btn btn-lg btn-primary" %>
+<% if logged_in? %>
+    <p><%= current_user.name %>さん　ようこそ！</p>
+    ここにカレンダー？を表示
+<% else %>
+
+    <div class="center jumbotron">
+        <div class="text-center">
+            <h1>Welcome to Uritime!</h1>
+            <p>Uritimeとはカレンダーを利用した<br>
+            スケジュール管理アプリです。</p>
+            
+            <%= link_to "ログイン", login_path, class: "btn btn-lg btn-success" %>
+            <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+        </div>
     </div>
-</div>
+    
+<% end %>

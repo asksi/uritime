@@ -1,10 +1,8 @@
 <header class="mb-4">
-    <nav class="navber navbar-expand-sm navbar-info bg-info">
+    <nav class="navber navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
         <a class="navbar-brand" href="/">Uritime</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"></button>
+
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navar-nav">
                 <% if logged_in? %>
@@ -13,6 +11,7 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
                         <ul class="dropdown-menu dropdown-menu-right">
+                          <li class="dropdown-item"><%= link_to "My profile", user_path(current_user) %></li>
                           <li class="dropdown-item"><%= link_to "My calendar", user_path(current_user) %></li>
                           <li class="dropdown-diviver"></li>
                           <li class="dropdown-item"><%= link_to "Logout", logout_path, method: :delete %></li>
