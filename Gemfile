@@ -60,5 +60,5 @@ gem 'mini_magick'
 gem 'simple_calendar', '~> 2.0'
 
 group :production do
-  gem 'pg', '>=0.18', '< 2.0'
+  gem 'pg', '>= 0.18', '< 2.0'
 end
