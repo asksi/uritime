@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-sm-6">
+        <h5>詳細ページ</h5>
+        <div>
+            <p><%= calendar.start_time %> ~ <%= calendar.end_time %></p>
+            <p><%= calendar.title %></p>
+            <p><%= calendar.content %></p>
+        </div>
+        <div>
+            <%= link_to '編集する', edit_calendar_path(calendar), class: 'btn btn-primary' %>
+            <%= link_to "削除する", calendar, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger' %>
+        </div>
+    </div>
+</div>

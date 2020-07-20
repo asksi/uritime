@@ -4,7 +4,10 @@ class User < ApplicationRecord
     validates :email, presence: true, length: {maximum: 255 }, 
                      format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, 
                      uniqueness: { case_sensitive: false }
+    validates :profile, length: { maximum: 500 }
     mount_uploader :image, ImageUploader
     has_secure_password
+    
+    has_many :calendars
 
 end

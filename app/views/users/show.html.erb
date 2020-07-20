@@ -9,8 +9,10 @@
             <h6><%= @user.profile %></h6>
         </div>
         <div class="col-sm-12">
-            <%= link_to 'ユーザ情報を編集する', edit_user_path(@user), class: "btn btn-primary" %>
-            <%= link_to "ユーザ情報を削除する", @user, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger' %>
+            <% if current_user == @user %>
+                <%= link_to 'ユーザ情報を編集する', edit_user_path(@user), class: 'btn btn-primary' %>
+                <%= link_to "ユーザ情報を削除する", @user, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger' %>
+            <% end %>
         </div>
 
     </div>

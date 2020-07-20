@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
             redirect_to login_url
         end
     end
+    
+    # def correct_user
+    #     @calendar = current_user.calenders.find_by(id: params[:id])
+    #     unless @calendar
+    #       redirect_to root_url
+    #     end
+    # end
+  
 end

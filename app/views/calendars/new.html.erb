@@ -1,0 +1,5 @@
+<h4><%= current_user.name %>さんのカレンダー</h4>
+<p>新しい予定の追加</p>
+<% if current_user == @calendar.user %>
+    <%= render 'layouts/calendar_form', calendar: @calendar %>
+<% end %>
