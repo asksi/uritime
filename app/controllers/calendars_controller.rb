@@ -14,14 +14,14 @@ class CalendarsController < ApplicationController
   
   def create
     @calendar = current_user.calendars.build(calendar_params)
-    if @calendar.save
-      flash[:success] = "予定を追加しました。"
-      redirect_to root_url
-    else
-      @calendars = current_user.calendars
-      flash.now[:danger] = "予定が追加できませんでした。"
-      render :new
-    end
+      if @calendar.save
+        flash[:success] = "予定を追加しました。"
+        redirect_to root_url
+      else
+        @calendars = current_user.calendars
+        flash.now[:danger] = "予定が追加できませんでした。"
+        render :new
+      end
   end
   
   def edit

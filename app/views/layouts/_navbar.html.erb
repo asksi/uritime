@@ -9,7 +9,20 @@
       <ul class="navbar-nav">
         <% if logged_in? %>
           <li class="nav-item"><%= link_to "Users", users_path, class: "nav-link" %></li>
-          <li class="nav-item"><%= link_to "Groups", users_path, class: "nav-link" %></li>
+          <% if current_group? %>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_group.name %></a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li class="dropdown-item"><%= link_to "Group-member", group_path(current_group) %></li>
+                <li class="dropdown-item"><%= link_to "Calendar", root_path %></li>
+                <li class="dropdown-item"><%= link_to "Message-board", root_path %></li>
+                <li class="dropdown-diviver"></li>
+                <li class="dropdown-item"><%= link_to "Groups", groups_path %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="nav-item"><%= link_to "Groups", groups_path, class: "nav-link" %></li>
+          <% end %>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">

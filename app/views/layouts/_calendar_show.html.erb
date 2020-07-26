@@ -7,8 +7,12 @@
             <p><%= calendar.content %></p>
         </div>
         <div>
-            <%= link_to '編集する', edit_calendar_path(calendar), class: 'btn btn-primary' %>
-            <%= link_to "削除する", calendar, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger' %>
+            <% if calendar.user == current_user %>   
+                <div>
+                    <%= link_to '編集する', edit_calendar_path(calendar), class: 'btn btn-primary' %>
+                    <%= link_to "削除する", calendar, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger' %>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>

@@ -1,0 +1,25 @@
+  <h2>グループ一覧</h2>
+  <ul class="list-unstyled">
+    <% @groups.each do |group| %>
+        <li class="media">
+            <div>
+                <!--アイコンつけたかったらここへ-->
+            </div>
+            <div class="media-body">
+                <div>
+                    <h5><%= link_to group.name, group_path(group) %></h5>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <p><%= link_to 'Calendar', groups_path(group), class: 'btn btn-outline-info btn-sm' %></p>
+                    </div>
+                    <div class= "col-6">
+                        <p><%= link_to 'Message-board', groups_path(group), class: 'btn btn-outline-success btn-sm' %></p>
+                    </div>
+                </div>
+
+            </div>
+        </li>
+    <% end %>
+  </ul>
+  <%= paginate @groups %>

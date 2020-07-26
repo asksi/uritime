@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(10)
+    # groups/newのアクション
+    @group = Group.new
+    @group.users << current_user
+    
   end
 
   def show

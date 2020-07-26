@@ -7,4 +7,11 @@ module SessionsHelper
         !!current_user
     end
     
+    def current_group
+        @current_group ||= Group.find_by(id: params[:id])
+    end
+    
+    def current_group?
+        !!current_group
+    end
 end

@@ -1,0 +1,30 @@
+<h2>ユーザ一覧</h2>
+  <ul class="list-unstyled">
+        <div>
+            <!--グループの作成者-->
+            <li class="media">
+                <div>
+                    <%= icon_url(@admin_user) %>
+                </div>
+                <div class="media-body">
+                    <div>
+                        <p><%= link_to @admin_user.name, user_path(@admin_user) %></p>
+                    </div>
+                    <% if current_user == @admin_user %>
+                        <div>
+                            <%= link_to 'グループを編集する', edit_group_path(@group), class: 'btn btn-primary' %>
+                        </div>
+                    <% end %>
+                </div>
+            </li>
+        </div>
+        <div>
+            <div>
+                <% if @users.any? %>
+                    <!--グループのメンバー-->
+                    <%= render 'users/users', users: @users %>
+                <% end %>
+            </div>
+        </div>
+  </ul>
+
