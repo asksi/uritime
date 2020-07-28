@@ -1,0 +1,8 @@
+<% if @users.any? %>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <h2>新規グループ作成</h2>
+            <%= render 'group_form', group: @group %>
+        </div>
+    </div>
+<% end %>

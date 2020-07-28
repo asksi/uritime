@@ -1,2 +1,9 @@
-<h2>ユーザ一覧</h2>
-<%= render "users", users: @users %>
+<div class="text-center">
+    <h2>ユーザ一覧</h2>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <p><%= link_to '新規グループを作成する', new_group_path, class: 'btn btn-warning' %></p>
+            <%= render "users", users: @users %>
+        </div>
+    </div>
+</div>

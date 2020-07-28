@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users
   resources :calendars
-  resources :groups, only: [:index, :show, :create, :edit, :update, :destroy]
+  resources :groups
+  
 end

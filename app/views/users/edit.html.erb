@@ -1,8 +1,12 @@
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 offset-sm-3">
+        <h2><%= @user.name %>さんの編集ページ</h2>
         <%= form_with(model: @user, local: true) do |f| %>
             <%= render 'layouts/error_messages', model: @user %>
             <div class="form-group">
+                <div>
+                    <%= f.label :image, 'Icon' %>
+                </div>
                 <%= image_url(@user) %>
                 <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
             </div>
@@ -14,7 +18,7 @@
                 <%= f.label :profile, 'Profile' %>
                 <%= f.text_area :profile, class: 'form-control' %>
             </div>
-            <%= f.submit 'ユーザ情報を更新する', class: 'btn btn-primary' %>
+            <%= f.submit 'ユーザ情報を更新する', class: 'btn btn-primary btn-block' %>
         <% end %>
     </div>
 </div>

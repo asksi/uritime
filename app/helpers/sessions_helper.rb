@@ -8,10 +8,14 @@ module SessionsHelper
     end
     
     def current_group
-        @current_group ||= Group.find_by(id: params[:id])
+        @current_group ||= Group.find_by(id: params[:group_id])
     end
     
     def current_group?
         !!current_group
     end
+    
+    # def current_group?
+        
+    #     if current_user == group.users or group.user_id
 end

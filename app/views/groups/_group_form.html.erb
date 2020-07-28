@@ -1,0 +1,36 @@
+<div class="form">
+    <%= form_for group, local: true do |f| %>
+    <%= render "layouts/error_messages", model: f.object %>
+        <div class="form-field">
+        </div>
+        <div class="form-field">
+            <div class="form-field-left">
+                <%= f.label :name, 'グループ名（※必須）', class: 'form-field-label' %>
+            </div>
+            <div class="form-field-right">
+                <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-field-left">
+                <%= f.label :introduction, '概要', class: 'form-field-label' %>
+            </div>
+            <div class="form-field-right">
+                <%= f.text_area :introduction, class: 'form-control' %>
+            </div>
+        </div>
+        <div class="form-field">
+            <div class="form-field-left">
+                <%= f.label 'メンバー選択（※必須）', class: 'form-field-label' %>
+            </div>
+            <div class="form-field-right">
+                <%= f.collection_check_boxes :user_ids, User.all, :id, :name %>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <div class="form-field-left"></div>
+            <div class="form-field-right"></div>
+            <%= f.submit '送信', class: 'btn btn-primary btn-block' %>
+        </div>
+    <% end %>
+</div>
+        

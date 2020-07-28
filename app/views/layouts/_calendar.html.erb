@@ -1,12 +1,14 @@
 <!--全共通のカレンダー-->
-
-
-<%= link_to '予定を追加する', new_calendar_path, class: 'btn btn-primary btn-sm' %>
-<%= month_calendar events: calendars do |date, calendars| %>
-  <%= date.day %>
-  <% calendars.each do |calendar| %>
-    <div>
-      <%= link_to calendar.title, calendar_path(calendar.id) %>
+<div class="row">
+    <div class="col-sm-12">
+      <%= link_to '予定を追加する', new_calendar_path, class: 'btn btn-primary btn-sm' %>
+      <%= month_calendar events: calendars do |date, calendars| %>
+        <%= date.day %>
+        <% calendars.each do |calendar| %>
+          <div>
+            <%= link_to calendar.title, calendar_path(calendar.id) %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
+</div>
