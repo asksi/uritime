@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
     
     include SessionsHelper
+    include GroupsHelper
+    
     
     private
     
@@ -10,11 +12,11 @@ class ApplicationController < ActionController::Base
         end
     end
     
-    # def correct_user
-    #     @calendar = current_user.calenders.find_by(id: params[:id])
-    #     unless @calendar
-    #       redirect_to root_url
+    # いらないかもしれないお
+    # def correct_group
+    #     @group = current_user.join_groups.find_by(user_id: params[:id])
+    #     unless @group
+    #         redirect_back(fallback_location: group_path)
     #     end
     # end
-  
 end

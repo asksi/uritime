@@ -12,6 +12,7 @@ class User < ApplicationRecord
     has_many :groups
     has_many :group_users
     has_many :join_groups, through: :group_users, source: :group
+    has_many :group_calendars
     
     def join(group)
         group_users.find_or_create_by(group_id: group.id)
@@ -26,6 +27,7 @@ class User < ApplicationRecord
         self.join_groups.include?(group)
     end
     
+    # 頑張ったが中間テーブルをusersのmemberdo でルーティングしたため不要
     # 自分が加入するグループを一覧で表示するための定義
     def feed_groups
         # id_list = Group.where(id: self.join_group_ids) + Group.where(user_id: self.id)

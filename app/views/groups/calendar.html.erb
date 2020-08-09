@@ -1,0 +1,14 @@
+<h4><%= @group.name %>のカレンダー</h4>
+<div class="row">
+    <div class="col-sm-12">
+      <%= link_to '予定を追加する', events_group_path(@group), class: 'btn btn-primary btn-sm' %>
+      <%= month_calendar events: @group_calendars do |date, group_calendars| %>
+        <%= date.day %>
+        <% group_calendars.each do |group_calendar| %>
+          <div>
+            <%= mini_url(group_calendar.user) %> <%= link_to group_calendar.title, group_calendar_path(group_calendar) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+</div>

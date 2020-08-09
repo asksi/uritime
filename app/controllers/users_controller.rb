@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
-  
+  before_action :require_user_logged_in, only: [:index, :show, :groups]
+  before_action :set_user, only: [:show]
+  before_action :correct_user, only: [:edit, :update, :destroy, :groups]
+
   def index
     @users = User.order(id: :desc).page(params[:page]).per(10)
     
@@ -47,6 +47,11 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  # 自分の所属するグループを一覧で表示
+  def groups
+    @groups = @user.join_groups.order(id: :desc).page(params[:page]).per(10)
+  end
+  
   private
   
   def set_user
@@ -56,4 +61,13 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :profile)
   end
+  
+ 
+  def correct_user
+    @user = User.find_by(id: params[:id])
+      unless @user == current_user
+          redirect_to users_url
+      end
+  end
+    
 end

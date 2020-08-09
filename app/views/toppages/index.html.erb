@@ -1,6 +1,6 @@
 <% if logged_in? %>
     <h4><%= current_user.name %>さんのカレンダー</h4>
-    <%= render 'layouts/calendar', calendars: @calendars %>
+    <%= render 'layouts/calendar', model: @calendars %>
 <% else %>
 
     <div class="center jumbotron">

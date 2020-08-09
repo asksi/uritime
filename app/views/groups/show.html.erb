@@ -8,6 +8,7 @@
                         <!--グループのメンバー-->
                         <%= render 'users/users', users: @users %>
                     <% end %>
+                    <p><%= @group.introduction %></p>
                     <% if current_user == @admin_user %>
                         <div>
                             <%= link_to 'グループを編集する', edit_group_path(@group), class: 'btn btn-primary' %>

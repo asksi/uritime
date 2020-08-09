@@ -5,7 +5,6 @@ class CalendarsController < ApplicationController
   
   
   def show
-    # @calendar = current_user.calendars.find(params[:id])
   end
   
   def new
@@ -25,12 +24,9 @@ class CalendarsController < ApplicationController
   end
   
   def edit
-    # @calendar = current_user.calendars.find(params[:id])
   end
   
   def update
-    # @calendar = current_user.calendars.find(params[:id])
-
     if @calendar.update(calendar_params)
       flash[:success] = "予定を更新しました。"
       redirect_to root_url

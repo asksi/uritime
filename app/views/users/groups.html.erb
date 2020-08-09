@@ -1,0 +1,38 @@
+<div class="text-center">
+    <h2>グループ一覧</h2>  
+
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <p><%= link_to '新規グループを作成する', new_group_path, class: 'btn btn-warning' %></p>
+
+            <ul class="list-unstyled">
+            <% @groups.each do |group| %>
+                <div class="border-bottom border-secondary" style="margin:20px;">
+                    <li class="media">
+                        <div>
+                            <!--アイコンつけたかったらここへ-->
+                        </div>
+                        <div class="media-body">
+                            <div>
+                                <h5><%= link_to group.name, group_path(group) %></h5>
+                            </div>
+                            <div>
+                                <p><%= group.introduction %></p>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <p><%= link_to 'Calendar', calendar_group_path(group), class: 'btn btn-outline-info btn-sm' %></p>
+                                </div>
+                                <div class= "col-6">
+                                    <p><%= link_to 'Message-board', groups_user_path(current_user), class: 'btn btn-outline-success btn-sm' %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            <% end %>
+            </ul>
+            <%= paginate @groups %>
+        </div>
+    </div>
+</div>

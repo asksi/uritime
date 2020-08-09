@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_074820) do
+ActiveRecord::Schema.define(version: 2020_08_07_071442) do
 
   create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 2020_07_22_074820) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_calendars_on_user_id"
+  end
+
+  create_table "group_calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.bigint "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["group_id"], name: "index_group_calendars_on_group_id"
+    t.index ["user_id"], name: "index_group_calendars_on_user_id"
   end
 
   create_table "group_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_074820) do
   end
 
   add_foreign_key "calendars", "users"
+  add_foreign_key "group_calendars", "groups"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "groups", "users"

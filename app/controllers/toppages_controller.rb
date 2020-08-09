@@ -3,7 +3,7 @@ class ToppagesController < ApplicationController
     if logged_in?
       
         # カレンダー表示にする今はまだ。
-        @calendars = current_user.calendars.all
+        @calendars = current_user.calendars
     end
   end
   

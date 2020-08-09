@@ -1,0 +1,13 @@
+<div class="text-center">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <h4> <%= @group.name %>  のカレンダー</h4>
+            <p>新しい予定の追加</p>
+            <%= form_with(model: @group_calendar, local: true) do |f| %>
+                <%= render 'layouts/calendar_form', calendar: @group_calendar, f: f %>
+                <%= hidden_field_tag :group_id, @group.id %>
+                <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
+            <% end %>
+        </div>
+    </div>
+</div>
