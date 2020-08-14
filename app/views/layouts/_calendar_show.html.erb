@@ -1,17 +1,5 @@
-<div class="row">
-    <div class="col-sm-6 offset-sm-3">
-        <h5><%= calendar.title %>詳細</h5>
-        <div>
-            <p><%= calendar.start_time.strftime("%Y-%m-%d %H:%M") %> ~ <%= calendar.end_time %></p>
-            <p><%= calendar.content %></p>
-        </div>
-        <div>
-            <% if calendar.user == current_user %>   
-                <div>
-                    <%= link_to '編集する', edit_calendar_path(calendar), class: 'btn btn-primary' %>
-                    <%= link_to "削除する", calendar, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger' %>
-                </div>
-            <% end %>
-        </div>
-    </div>
+<h5><%= calendar.title %></h5>
+<div>
+    <p><%= calendar.start_time.strftime("%Y-%m-%d %H:%M") %> ~ <% if calendar.end_time? %><%= calendar.end_time.strftime("%Y-%m-%d %H:%M") %><% end %></p>
+    <p><%= calendar.content %></p>
 </div>

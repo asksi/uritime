@@ -1,16 +1,10 @@
 <div class="text-center">
     <div class="row">
-    <div class="col-sm-6 offset-sm-3">
-    <h4><%= current_group.name %>　のカレンダー</h4>
-            <h5><%= @group_calendar.title %>詳細</h5>
+        <div class="col-sm-6 offset-sm-3">
+            <h4><%= current_group.name %>　のカレンダー</h4>
+            <p><%= icon_url(@group_calendar.user) %>  <%= @group_calendar.user.name %></p>
+            <%= render 'layouts/calendar_show', calendar: @group_calendar %>
             <div>
-                <p><%= icon_url(@group_calendar.user) %>  <%= @group_calendar.user.name %></p>
-                <p><%= @group_calendar.start_time.strftime("%Y-%m-%d %H:%M") %> ~ 
-                <% if @group_calendar.end_time? %><%= @group_calendar.end_time.strftime("%Y-%m-%d %H:%M") %> <% end %></p>
-                <p><%= @group_calendar.content %></p>
-            </div>
-            <div>
-                <!--グループに所属する全員が編集可能    -->
                 <% if @group_calendar.user  == current_user %>   
                     <div>
                         <%= link_to '編集する', edit_group_calendar_path(@group_calendar), class: 'btn btn-primary' %>

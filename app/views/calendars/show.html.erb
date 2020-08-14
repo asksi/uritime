@@ -1,4 +1,16 @@
 <div class="text-center">
-    <h4><%= current_user.name %>さんのカレンダー</h4>
-    <%= render 'layouts/calendar_show', calendar: @calendar %>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <h4><%= current_user.name %>さんのカレンダー</h4>
+            <%= render 'layouts/calendar_show', calendar: @calendar %>
+            <div>
+                <% if @calendar.user == current_user %>   
+                    <div>
+                        <%= link_to '編集する', edit_calendar_path(@calendar), class: 'btn btn-primary' %>
+                        <%= link_to "削除する", @calendar, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger' %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>

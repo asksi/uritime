@@ -1,0 +1,36 @@
+<div class="text-center">
+    <h2><%= @group.name %> </h2>
+</div>
+    
+<div class="row">
+    <aside class="col-sm-5">
+        <%= form_with(model: @post, local: true) do |f| %>
+            <%= render 'posts/form_post', post: @post, group: @group, f: f %>
+            <%= f.submit '投稿', class: 'btn btn-success btn-block' %>
+        <% end %>
+    </aside>
+    <!--posts index-->
+    <div class="col-sm-7">
+        <ul class="list-unstyled">
+        <% @posts.each do |post| %>
+            <li class="media mb-3">
+                <%= icon_url(post.user) %>
+                <div class="media-body">
+                    <div>
+                        <%= link_to post.user.name, user_path(post.user) %>
+                        <span class="text-muted">posted at <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+                    </div>
+                    <div>
+                        <p><%= post.content %></p>
+                        <% if current_user == post.user %>
+                            <%= link_to '編集', edit_post_path(post), class: 'btn btn-primary btn-sm' %>
+                            <%= link_to "削除", post, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger btn-sm' %>
+                        <% end %>
+                    </div>
+                </div>
+            </li>
+        <% end %>
+        <%= paginate @posts %>
+        </ul>
+    </div>
+</div>

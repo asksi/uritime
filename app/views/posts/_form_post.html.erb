@@ -1,0 +1,6 @@
+<%= render "layouts/error_messages", model: post %>
+
+<div class="form-group">
+    <%= f.text_area :content, class: 'form-control', rows: 5 %>
+    <%= hidden_field_tag :group_id, group.id %>
+</div>

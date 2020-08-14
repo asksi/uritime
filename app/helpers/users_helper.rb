@@ -1,9 +1,9 @@
 module UsersHelper
     def icon_url(user)
         if user.image?
-            image_tag user.image.url, size: '100x100', class: "rounded-circle"
+            image_tag user.image.url, size: '50x50', class: "mr-2 rounded-circle"
         else
-            image_tag "l_e_others_501.png", alt: "default icon", id: "assets", class: "image, rounded-circle", size: '100x100'
+            image_tag "l_e_others_501.png", alt: "default icon", id: "assets", class: "image, rounded-circle", size: '50x50'
         end
     end
     

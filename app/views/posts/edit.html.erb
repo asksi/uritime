@@ -1,0 +1,13 @@
+<div class="text-center">
+<div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="text-center">
+                <h4>投稿の編集</h4>
+                <%= form_with(model: @post, local: true) do |f| %>
+                <%= render 'posts/form_post', post: @post, group: @group, f: f %>
+                    <%= f.submit '更新', class: 'btn btn-success btn-block' %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,7 @@
 class GroupsController < ApplicationController
     before_action :require_user_logged_in, only: [:index]
-    before_action :set_group, only: [:show, :edit, :update, :destroy, :calendar, :events]
-    before_action :set_admin_user, only: [:edit, :update, :destroy]
-    # before_action :correct_group, only: [:show]
+    before_action :set_group_admin_user, only: [:edit, :update, :destroy]
+    before_action :correct_group, only: [:show, :calendar, :events, :posts]
     
     
     def new
@@ -18,12 +17,8 @@ class GroupsController < ApplicationController
         # if !@group.users.include?(current_user)
         #     @group.users << current_user
         # end
-        if current_user.join?(@group)
-            @admin_user = @group.user
-            @users = @group.users.order(id: :desc).page(params[:page]).per(10)
-        else
-            redirect_back(fallback_location: root_url)
-        end
+        @admin_user = @group.user
+        @users = @group.users.order(id: :desc).page(params[:page]).per(10)
     end
     
     # 不必要
@@ -73,40 +68,37 @@ class GroupsController < ApplicationController
     end
     
     def calendar
-        if current_user.join?(@group)
-            @group_calendars = GroupCalendar.where(group_id: @group.id).all
-            # @group_calendars = @group.group_calendars
-        else
-            redirect_back(fallback_location: root_url)
-        end
+        @group_calendars = GroupCalendar.where(group_id: @group.id).all
     end
     
     def events
-        if current_user.join?(@group)
-            @group_calendar = current_user.group_calendars.new
-            # @group_calendar.group_id = params[:id] 
-        else
-            redirect_back(fallback_location: groups_user_path(current_user))
-        end            
+       @group_calendar = current_user.group_calendars.new
+    end
+    
+    def posts
+        @posts = @group.posts.order(id: :desc).page(params[:page]).per(20)
+        @post = current_user.posts.build
     end
     
     private
     
-    def set_admin_user
-        # @user = User.find(params[:id])
+    def set_group_admin_user
+        @group = Group.find(params[:id])
         @admin_user = @group.user
         unless current_user == @admin_user
-            redirect_back(fallback_location: root_url)
+            redirect_back(fallback_location: groups_user_path(current_user))
         end
-        
     end
     
-    def set_group
-        @group = Group.find(params[:id])
-    end
-  
     def group_params
         params.require(:group).permit(:name, {user_ids: []}, :introduction)
+    end
+    
+    def correct_group
+        @group = Group.find(params[:id])
+        unless current_user.join?(@group)
+            redirect_back(fallback_location: groups_user_path(current_user))
+        end 
     end
     
 

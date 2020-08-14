@@ -18,9 +18,10 @@ Rails.application.routes.draw do
     member do
       get :calendar
       get :events
+      get :posts
     end
   end
   resources :group_calendars, only: [:show, :create, :edit, :update, :destroy]
-  
+  resources :posts, only: [:create, :edit, :update, :destroy]
   
 end
