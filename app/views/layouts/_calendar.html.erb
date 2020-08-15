@@ -1,7 +1,7 @@
 <!--全共通のカレンダー-->
 <div class="row">
     <div class="col-sm-12">
-      <%= link_to '予定を追加する', new_calendar_path, class: 'btn btn-primary btn-sm' %>
+      <%= link_to '予定を追加する', new_calendar_path, class: 'btn btn-primary' %>
       <%= month_calendar events: model do |date, calendars| %>
         <%= date.day %>
         <% calendars.each do |calendar| %>

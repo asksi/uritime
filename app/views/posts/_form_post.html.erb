@@ -1,7 +1,11 @@
 <%= render "layouts/error_messages", model: post %>
 
 <div class="form-group">
-    <%= f.text_area :content, class: 'form-control', rows: 5 %>
+    <%= f.label :content, '文章' %>
+    <%= f.text_area :content, class: 'form-control', rows: 5, placeholder: "グループメンバーへ自由にメッセージを送ろう！" %>
+</div>
+<div class="form-group">
+    <%= f.label :image, '写真' %>
     <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
 <!--, multiple: true-->
     <%= hidden_field_tag :group_id, group.id %>

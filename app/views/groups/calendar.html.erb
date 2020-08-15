@@ -1,7 +1,7 @@
-<h4><%= @group.name %>のカレンダー</h4>
+<h4><%= @group.name %>　カレンダー</h4>
 <div class="row">
     <div class="col-sm-12">
-      <%= link_to '予定を追加する', events_group_path(@group), class: 'btn btn-primary btn-sm' %>
+      <%= link_to '予定を追加する', events_group_path(@group), class: 'btn btn-primary' %>
       <%= month_calendar events: @group_calendars do |date, group_calendars| %>
         <%= date.day %>
         <% group_calendars.each do |group_calendar| %>
