@@ -2,5 +2,7 @@
 
 <div class="form-group">
     <%= f.text_area :content, class: 'form-control', rows: 5 %>
+    <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: 'form-control' %>
+<!--, multiple: true-->
     <%= hidden_field_tag :group_id, group.id %>
 </div>

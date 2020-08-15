@@ -24,10 +24,10 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:success] = "投稿を更新しました。"
+      flash[:success] = "投稿を編集しました。"
       redirect_to posts_group_path(@group)
     else
-      flash.now[:danger] = "投稿を更新できませんでした。"
+      flash.now[:danger] = "投稿を編集できませんでした。"
       render :edit
     end
   end
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:content, {image_ids: []})
+    params.require(:post).permit(:content, :image)
   end
   
   def correct_user

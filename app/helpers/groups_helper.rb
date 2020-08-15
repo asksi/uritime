@@ -9,9 +9,14 @@ module GroupsHelper
         !!current_group
     end
     
-     # これ必要かな？
-    def adimin_user
-         @admin_user = @group.user
+    # _2navbar, layouts/groups.html.erb
+    def current__group
+        @current__group ||= Group.find_by(id: params[:id])
     end
+    
+    def current__group?
+        !!current__group
+    end
+    
     
 end

@@ -5,7 +5,7 @@
                 <h4>投稿の編集</h4>
                 <%= form_with(model: @post, local: true) do |f| %>
                 <%= render 'posts/form_post', post: @post, group: @group, f: f %>
-                    <%= f.submit '更新', class: 'btn btn-success btn-block' %>
+                    <%= f.submit '編集', class: 'btn btn-success btn-block' %>
                 <% end %>
             </div>
         </div>

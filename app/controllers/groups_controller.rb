@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
     before_action :require_user_logged_in, only: [:index]
     before_action :set_group_admin_user, only: [:edit, :update, :destroy]
     before_action :correct_group, only: [:show, :calendar, :events, :posts]
+    layout 'groups'
     
     
     def new

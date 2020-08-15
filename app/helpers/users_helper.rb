@@ -19,7 +19,7 @@ module UsersHelper
         if user.image?
             image_tag user.image.url, size: '250x250', class: "rounded-circle"
         else
-            image_tag "l_e_others_501.png", alt: "default icon", id: "assets", class: "image, , rounded-circle", size: '250x250'
+            image_tag "l_e_others_501.png", alt: "default icon", id: "assets", class: "image, rounded-circle", size: '250x250'
         end
     end
 end

@@ -1,7 +1,7 @@
-<div class="text-center">
-    <h2><%= @group.name %> </h2>
+<div class="mb-3 text-center">
+    <h2><%= @group.name %> Message-board</h2>
 </div>
-    
+
 <div class="row">
     <aside class="col-sm-5">
         <%= form_with(model: @post, local: true) do |f| %>
@@ -18,14 +18,25 @@
                 <div class="media-body">
                     <div>
                         <%= link_to post.user.name, user_path(post.user) %>
-                        <span class="text-muted">posted at <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+                        <% if post.updated_at != post.created_at %>
+                            <span class="text-muted">posted at <%= post.updated_at.strftime("%Y-%m-%d %H:%M") %> （編集済み）</span>
+                        <% else %>
+                            <span class="text-muted">posted at <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+                        <% end %>
                     </div>
                     <div>
                         <p><%= post.content %></p>
-                        <% if current_user == post.user %>
-                            <%= link_to '編集', edit_post_path(post), class: 'btn btn-primary btn-sm' %>
-                            <%= link_to "削除", post, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger btn-sm' %>
+                         <% if post.image? %>
+                               <%= image_tag(post.image.url, { size: 200 }) %>
+                            
                         <% end %>
+                       
+                        <div class="mt-3">
+                            <% if current_user == post.user %>
+                                <%= link_to '編集', edit_post_path(post), class: 'btn btn-primary btn-sm' %>
+                                <%= link_to "削除", post, method: :delete, data: {confirm: "本当に削除してよろしいですか？"}, class: 'btn btn-danger btn-sm' %>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </li>
