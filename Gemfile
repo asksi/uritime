@@ -58,6 +58,7 @@ gem 'pry-byebug', group: :development
 gem 'kaminari'
 gem 'carrierwave'
 gem 'simple_calendar', '~> 2.0'
+gem "aws-sdk-s3", require: false 
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
