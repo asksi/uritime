@@ -1,24 +1,33 @@
-# README
+# Uritime
+カレンダーを利用したスケジュール管理アプリ。
+自分や家族の予定を一目で確認したく、カレンダー表示を採用。
+また家族や友人たちとスケジュールを共有できるようユーザ一覧より、グループを作成できる。
+グループ内でのメンバーでのみ、カレンダー、メッセージボードを利用可能。
+ちなみに、Uri = 私たち（韓国語）Time = 時間（英語）語呂がよかったのでアプリ名に決定。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## URL
+**https://o7uritime16.herokuapp.com**
 
-Things you may want to cover:
+## 機能/技術一覧
 
-* Ruby version
+・ユーザ登録機能
+・ユーザログイン機能
+・グループ作成機能
+・投稿機能
+・投稿一覧機能（カレンダーの表示：'simple_calendar）
+・投稿詳細表示機能
+・投稿編集機能
+・投稿削除機能
+・画像ファイルのアップロード機能（'carrierwave'）
+・ページネーション機能（'kaminari'）
+・DBテーブルのリレーション
+ （一対多、多対多リレーションシップ）
+ ・モデルに対するバリデーション
+ 
+## 環境
+・rails 5.2.2
+・開発環境：cloud9, mysql
+・本番環境：heroku, postgreSQL, S3
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## インストール
+$ git clone https://github.com/asksi/uritime.git
