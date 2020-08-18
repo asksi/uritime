@@ -1,0 +1,8 @@
+<%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+    <div class="test-user">
+       <p> <i class="fas fa-user"></i>　Try?
+        <%= f.hidden_field :email, value: 'test@example.com' %>
+        <%= f.hidden_field :password, value: 'testdayoyoyo' %>
+        <%= f.submit 'テストユーザーとしてログイン', class: 'btn btn-warning btn-sm' %></p>
+    </div>
+<% end %>

@@ -8,12 +8,13 @@
             <h1>Welcome to Uritime!</h1>
             <h5>Uritimeとはカレンダーを利用した<br>
             スケジュール管理アプリです。</h5><br>
-            <p>ログインすると、自分のカレンダーが作成され、<br>
-            ユーザ一覧からグループを作成でき、グループ内で<br>
-            カレンダーの共有やメッセージボードが使えます💓</p>
+           
             
-            <%= link_to "ログイン", login_path, class: "btn btn-lg btn-success" %>
-            <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-primary" %>
+            <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
+            <%= link_to "新規登録", signup_path, class: "btn btn-lg btn-success" %>
+            <div class="mt-3">
+                <%= render 'sessions/test_user' %>
+            </div>
         </div>
     </div>
     
